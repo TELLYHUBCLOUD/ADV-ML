@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MadxBotz ML</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Exo:wght@300;400;600;700&display=swap');
+
+        body {
+            font-family: 'Exo', sans-serif !important;
+        }
+        
+        :root {
+            --bg-color: #f5f7fa;
+            --primary-blue: #2563eb;
+            --primary-yellow: #f59e0b;
+            --primary-orange: #ef4444;
+            --text-color: #1f2937;
+            --secondary-text: #6b7280;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .background-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.3) 0%, transparent 40%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.2) 0%, transparent 40%),
+                radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0.2) 0%, transparent 40%);
+            opacity: 0.5;
+            filter: blur(70px);
+            z-index: 0;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            animation: contentAppear 1s ease-out;
+        }
+
+        @keyframes contentAppear {
+            from { 
+                opacity: 0; 
+                transform: translateY(20px);
+                backdrop-filter: blur(0px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0);
+                backdrop-filter: blur(20px);
+            }
+        }
+
+        .logo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            border: 4px solid var(--primary-blue);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--secondary-text);
+            font-weight: 400;
+        }
+
+        .version {
+            font-size: 1rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            font-weight: 600;
+            background: rgba(37, 99, 235, 0.1);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 0.9rem 1.8rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: all 0.5s ease;
+        }
+
+        .button:hover::before {
+            left: 100%;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.5);
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: var(--secondary-text);
+        }
+
+        .tagline {
+            font-size: 1rem;
+            color: var(--primary-blue);
+            margin-top: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 2rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .links {
+                flex-direction: column;
+            }
+
+            .button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="background-animation"></div>
+        <div class="content">
+            <img class="logo" src="https://i.ibb.co/5h7Ns5Xf/Madx-Botz-ML.jpg" alt="MadxBotz Logo">
+            <div class="version">V1.0.0</div>
+            <h1><b>MadxBotz ML</b></h1>
+            <p class="subtitle">Your Ultimate Mirror & Leech Bot Solution</p>
+
+            <div class="links">
+              <a href="https://t.me/MadxBotz" class="button">
+                <i class="fab fa-telegram-plane"></i> Telegram Channel
+              </a>
+              <a href="https://t.me/MadxBotzSupport" class="button">
+                <i class="fas fa-comments"></i> Support Group
+              </a>
+            </div>
+
+            <div class="tagline">FAST, RELIABLE, AND POWERFUL!</div>
+            <p class="copyright">&copy; 2026 MadxBotz ML. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+.venv/*
+rclone.conf
+.netrc
+config.py
+log.txt
+cfg.zip
+accounts/*
+thumbnails/*
+rclone/*
+tokens/*
+cookies/*
+mediainfo/*
+shortener.txt
+cookies.txt
+downloads/*
