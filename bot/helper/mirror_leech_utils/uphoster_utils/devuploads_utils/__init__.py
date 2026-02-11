@@ -1,1 +1,0 @@
-# DevUploads utility module
