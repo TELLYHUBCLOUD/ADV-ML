@@ -86,7 +86,7 @@ if DATABASE_URL := config_file.get("DATABASE_URL", "").strip():
         log_error(f"Database ERROR: {e}")
 
 UPSTREAM_REPO = config_file.get("UPSTREAM_REPO", "").strip()
-UPSTREAM_BRANCH = config_file.get("UPSTREAM_BRANCH", "").strip() or "wzv3"
+UPSTREAM_BRANCH = config_file.get("UPSTREAM_BRANCH", "").strip() or "main"
 
 if UPSTREAM_REPO:
     if path.exists(".git"):
