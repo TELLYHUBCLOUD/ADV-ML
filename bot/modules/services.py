@@ -33,9 +33,9 @@ async def start(_, message):
     lang = Language()
     buttons = ButtonMaker()
     buttons.url_button(
-        lang.START_BUTTON1, "https://t.me/Radha_Rani_Backup"
+        lang.START_BUTTON1, "https://github.com/TELLYHUBCLOUD/ADV-ML"
     )
-    buttons.url_button(lang.START_BUTTON2, "https://t.me/PRESIDENTIND7")
+    buttons.url_button(lang.START_BUTTON2, "https://t.me/telly_mirror")
     reply_markup = buttons.build_menu(2)
 
     if len(message.command) > 1 and message.command[1] == "wzmlx":
@@ -99,7 +99,7 @@ async def start(_, message):
     else:
         await send_message(
             message,
-            "<i>Bot can mirror/leech from links|tgfiles|torrents|nzb|rclone-cloud to any rclone cloud, Google Drive or to telegram.\n\n⚠️ You Are not authorized user! Deploy your own PotterBotz Customized Leech bot</i>",
+            "<i>Bot can mirror/leech from links|tgfiles|torrents|nzb|rclone-cloud to any rclone cloud, Google Drive or to telegram.\n\n⚠️ You Are not authorized user! Deploy your own  Customized Leech bot</i>",
             reply_markup,
         )
     await database.set_pm_users(userid)
