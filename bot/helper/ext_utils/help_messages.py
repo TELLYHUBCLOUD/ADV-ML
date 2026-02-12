@@ -35,7 +35,7 @@ The bot will automatically scrape the download link and leech to Telegram.
 /tdl -n custom_name -e -m folder_name
 
 <b>Features:</b>
-• Automatic link scraping (cyberloom → messycloud)
+• Automatic link scraping (cyberloom » messycloud)
 • Priority for GoFile and M1 Direct servers
 • Resume support detection
 • Retry logic for failed scraping attempts

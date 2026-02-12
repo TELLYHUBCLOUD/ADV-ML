@@ -465,7 +465,7 @@ async def send_audio_selection_message(session_id, message, tag):
         selected_tracks = [track for track in audio_tracks if track['index'] in selected_indices]
         selected_section = "\n\nSelected tracks for REMOVE :\n"
         for track in selected_tracks:
-            selected_section += f"├ {track['language'].upper()} (Track {track['index'] + 1})\n"
+            selected_section += f"┊ {track['language'].upper()} (Track {track['index'] + 1})\n"
         selected_section = selected_section.rstrip('\n')
     
     msg_text = f"""<b><u><i>Audio Remove Settings</i></u> 

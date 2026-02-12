@@ -181,11 +181,11 @@ async def limit_checker(listener, yt_playlist=0):
             if condition and (limit := getattr(Config, attr, 0)):
                 if attr == "PLAYLIST_LIMIT":
                     if yt_playlist >= limit:
-                        limit_exceeded = f"┠ <b>{name} Limit Count</b> → {limit}"
+                        limit_exceeded = f"┊ <b>{name} Limit Count</b> » {limit}"
                 else:
                     byte_limit = limit * 1024**3
                     if size >= byte_limit:
-                        limit_exceeded = f"┠ <b>{name} Limit</b> → {get_readable_file_size(byte_limit)}"
+                        limit_exceeded = f"┊ <b>{name} Limit</b> » {get_readable_file_size(byte_limit)}"
 
                 LOGGER.info(
                     f"{name} Limit Breached: {listener.name} & Size: {get_readable_file_size(size)}"
@@ -220,10 +220,10 @@ async def limit_checker(listener, yt_playlist=0):
             if not await check_storage_threshold(
                 size, limit, any([listener.compress, listener.extract])
             ):
-                limit_exceeded = f"┠ <b>Threshold Storage Limit</b> → {get_readable_file_size(limit)}"
+                limit_exceeded = f"┊ <b>Threshold Storage Limit</b> » {get_readable_file_size(limit)}"
 
     if limit_exceeded:
-        return limit_exceeded + f"\n┖ <b>Task By</b> → {listener.tag}"
+        return limit_exceeded + f"\n╰ <b>Task By</b> » {listener.tag}"
 
 
 """
@@ -266,18 +266,18 @@ async def pre_task_check(message):
         ut := await user_interval_check(user_id)
     ):
         msg.append(
-            f"┠ <b>Waiting Time</b> → {get_readable_time(ut)}\n┠ <i>User's Time Interval Restrictions</i> → {get_readable_time(uti)}"
+            f"┊ <b>Waiting Time</b> » {get_readable_time(ut)}\n┊ <i>User's Time Interval Restrictions</i> » {get_readable_time(uti)}"
         )
     bmax_tasks = safe_int(user_dict.get("bmax_tasks", Config.BOT_MAX_TASKS))
     if bmax_tasks > 0 and len(await get_specific_tasks("All", False)) >= bmax_tasks:
         msg.append(
-            f"┠ Max Concurrent Bot's Tasks Limit exceeded.\n┠ Bot Tasks Limit : {bmax_tasks} task"
+            f"┊ Max Concurrent Bot's Tasks Limit exceeded.\n┊ Bot Tasks Limit : {bmax_tasks} task"
         )
 
     maxtask = safe_int(user_dict.get("maxtask", Config.USER_MAX_TASKS))
     if maxtask > 0 and len(await get_specific_tasks("All", user_id)) >= maxtask:
         msg.append(
-            f"┠ Max Concurrent User's Task(s) Limit exceeded! \n┠ User Task Limit : {maxtask} tasks"
+            f"┊ Max Concurrent User's Task(s) Limit exceeded! \n┊ User Task Limit : {maxtask} tasks"
         )
 
     token_msg, button = await verify_token(user_id, button)
@@ -286,7 +286,7 @@ async def pre_task_check(message):
 
     if msg:
         username = message.from_user.mention
-        final_msg = f"⌬ <b>Task Checks :</b>\n│\n┟ <b>Name</b> → {username}\n┃\n"
+        final_msg = f"⌬ <b>Task Checks :</b>\n┊\n╭ <b>Name</b> » {username}\n┊\n"
         for i, m_part in enumerate(msg, 1):
             final_msg += f"{m_part}\n"
         if button is not None:

@@ -31,10 +31,10 @@ async def get_plugins_menu(user_id: int, stype: str = "main"):
         buttons.data_button("Close", f"plugins {user_id} close", position="footer")
 
         text = f"""⌬ <b>Plugin Management</b>
-│
-┟ <b>Loaded Plugins:</b> {len(loaded_plugins)}
-┠ <b>Available Plugins:</b> {len(available_plugins)}
-┖ <b>Total Plugins:</b> {len(loaded_plugins) + len(available_plugins)}"""
+┊
+╭ <b>Loaded Plugins:</b> {len(loaded_plugins)}
+┊ <b>Available Plugins:</b> {len(available_plugins)}
+╰ <b>Total Plugins:</b> {len(loaded_plugins) + len(available_plugins)}"""
 
         btns = buttons.build_menu(2)
 
@@ -51,8 +51,8 @@ async def get_plugins_menu(user_id: int, stype: str = "main"):
         buttons.data_button("Close", f"plugins {user_id} close", position="footer")
 
         text = f"""⌬ <b>Loaded Plugins</b>
-│
-┟ <b>Total Loaded:</b> {len(loaded_plugins)}"""
+┊
+╭ <b>Total Loaded:</b> {len(loaded_plugins)}"""
 
         btns = buttons.build_menu(1)
 
@@ -69,22 +69,22 @@ async def get_plugins_menu(user_id: int, stype: str = "main"):
 
         unloaded_count = len([p for p in available_plugins if p not in loaded_plugins])
         text = f"""⌬ <b>Available Plugins</b>
-│
-┟ <b>Unloaded Plugins:</b> {unloaded_count}"""
+┊
+╭ <b>Unloaded Plugins:</b> {unloaded_count}"""
 
         btns = buttons.build_menu(1)
 
     elif stype == "info":
         loaded_plugins = plugin_manager.list_plugins()
 
-        text = "⌬ <b>Plugin Information</b>\n│\n"
+        text = "⌬ <b>Plugin Information</b>\n┊\n"
         for plugin in loaded_plugins:
             status = "✅ Enabled" if plugin.enabled else "❌ Disabled"
-            text += f"┟ <b>{plugin.name}</b> v{plugin.version}\n"
-            text += f"┠ Author: {plugin.author}\n"
-            text += f"┠ Status: {status}\n"
-            text += f"┠ Commands: {', '.join(plugin.commands) if plugin.commands else 'None'}\n"
-            text += f"┖ Description: {plugin.description}\n\n"
+            text += f"╭ <b>{plugin.name}</b> v{plugin.version}\n"
+            text += f"┊ Author: {plugin.author}\n"
+            text += f"┊ Status: {status}\n"
+            text += f"┊ Commands: {', '.join(plugin.commands) if plugin.commands else 'None'}\n"
+            text += f"╰ Description: {plugin.description}\n\n"
 
         buttons.data_button("Back", f"plugins {user_id} main", position="footer")
         buttons.data_button("Close", f"plugins {user_id} close", position="footer")
@@ -107,12 +107,12 @@ async def get_plugins_menu(user_id: int, stype: str = "main"):
             buttons.data_button("Close", f"plugins {user_id} close", position="footer")
 
             text = f"""⌬ <b>Plugin: {plugin_name}</b>
-│
-┟ <b>Version:</b> {plugin_info.version}
-┠ <b>Author:</b> {plugin_info.author}
-┠ <b>Status:</b> {status}
-┠ <b>Commands:</b> {', '.join(plugin_info.commands) if plugin_info.commands else 'None'}
-┖ <b>Description:</b> {plugin_info.description}"""
+┊
+╭ <b>Version:</b> {plugin_info.version}
+┊ <b>Author:</b> {plugin_info.author}
+┊ <b>Status:</b> {status}
+┊ <b>Commands:</b> {', '.join(plugin_info.commands) if plugin_info.commands else 'None'}
+╰ <b>Description:</b> {plugin_info.description}"""
 
             btns = buttons.build_menu(2)
         else:
